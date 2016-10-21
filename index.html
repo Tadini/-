@@ -149,14 +149,16 @@ var cookieHandle = {
 				tempObj = this.aDiv[(x-1)+y*level];
 				this.hasOrNot(tempObj,"blue");
 			}
-			if(this.blueNum==level*level){
-				if(confirm("恭喜您完成第"+level+"阶段，是否进入下一阶段！")){
-					levelNum++;
-					cookieHandle.set("level",levelNum,7);
-					this.Level.innerHTML = levelNum;
-					pairBlock(levelNum);
+			setTimeout(function(){
+				if(this.blueNum==level*level){
+					if(confirm("恭喜您完成第"+level+"阶段，是否进入下一阶段！")){
+						levelNum++;
+						cookieHandle.set("level",levelNum,7);
+						this.Level.innerHTML = levelNum;
+						pairBlock(levelNum);
+					}
 				}
-			}
+			}.bind(this))
 		},
 		hasOrNot: function(obj,clsName){
 			if(this.hasClass(obj,clsName)){
